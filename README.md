@@ -95,16 +95,38 @@ Styling components within the Shadow DOM involves conventional CSS, providing th
 ## Effect on Site Speed and Coding
 Web components can enhance site speed by promoting modularity and reusability, leading to more efficient code. However, their use of Shadow DOM and custom elements might introduce some overhead. Coding speed can improve with reusable components, but the initial learning curve might impact development pace.
 # Complete Example: 
-Here's a simple example of my-element defined in HTML:
+Here's a simple example of `red-square` defined in js HTML:
+js: 
+```js
+class RedSquare extends HTMLElement {
+  connectedCallback() {
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    shadowRoot.innerHTML = `
+      <style>
+        .red-square {
+          width: 100px;
+          height: 100px;
+          background-color: red;
+        }
+      </style>
+      <div class="red-square"></div>
+    `;
+  }
+}
+
+customElements.define('red-square', RedSquare);
+```
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Web Components Example</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Square Example</title>
 </head>
 <body>
-  <my-element data="example-data"></my-element>
-  <script src="my-element.js"></script>
+  <red-square></red-square>
+  <script src="red-square.js"></script>
 </body>
 </html>
 ```
