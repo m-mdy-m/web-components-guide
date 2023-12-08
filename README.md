@@ -116,6 +116,7 @@ class RedSquare extends HTMLElement {
 
 customElements.define('red-square', RedSquare);
 ```
+html:
 ```html
 <!DOCTYPE html>
 <html lang="en">
